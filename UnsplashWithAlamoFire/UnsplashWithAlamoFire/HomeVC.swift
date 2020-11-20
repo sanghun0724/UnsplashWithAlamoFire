@@ -8,7 +8,7 @@
 import UIKit
 import Toast_Swift
 
-class HomeVC: UIViewController,UISearchBarDelegate {
+class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
 
     @IBOutlet var control:UISegmentedControl!
     @IBOutlet var imageView:UIImageView!
@@ -17,31 +17,30 @@ class HomeVC: UIViewController,UISearchBarDelegate {
     
     var filterData:[String] = []
     var data:[String] = []
+    var keyboardDismissTabGesture : UIGestureRecognizer =
+        UITapGestureRecognizer(target: self, action: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.config()
+    }
+    
+    //MARK:- fileprivate methods
+    
+    fileprivate func config() {
         searchBar.delegate = self
         self.button.layer.cornerRadius = 10
         self.searchBar.searchBarStyle = .minimal
+        self.keyboardDismissTabGesture.delegate = self
+        //제스처 추가
+        self.view.addGestureRecognizer(keyboardDismissTabGesture) // 그작은뷰 터치하면 감지! 노랭이
         
+        self.searchBar.becomeFirstResponder() //포커싱주기
     }
     
+    
     @IBAction func onSearchButtonClicked(_sender:UIButton) {
-        
-        var segueId:String = ""
-        
-        switch control.selectedSegmentIndex {
-        case 0:
-            print("사진화면으로이동")
-            segueId = "goToPhotoCollectionVC"
-        case 1:
-            print("유저화면으로이동")
-            segueId = "goToUserListVC"
-        default:
-            print("defalue")
-            segueId = "goToPhotoCollectionVC"
-        }
-        self.performSegue(withIdentifier: segueId, sender: self)
+        pushVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +72,38 @@ class HomeVC: UIViewController,UISearchBarDelegate {
         
     }
     
+    //MARK: - fileprivate methods
+    fileprivate func  pushVC() {
+        var segueId:String = ""
+        
+        switch control.selectedSegmentIndex {
+        case 0:
+            print("사진화면으로이동")
+            segueId = "goToPhotoCollectionVC"
+        case 1:
+            print("유저화면으로이동")
+            segueId = "goToUserListVC"
+        default:
+            print("defalue")
+            segueId = "goToPhotoCollectionVC"
+        }
+        self.performSegue(withIdentifier: segueId, sender: self)
+    }
+    
     //MARK: - UISearchBar Delegate methods
+    
+    func  searchBarSearchButtonClicked(_ searchBar:UISearchBar) {
+        
+        guard let userInputString = searchBar.text else {
+            return
+        }
+        if userInputString.isEmpty {
+            self.view.makeToast("키워드를 입력하세요", duration: 3.0, position: .top)
+        } else {
+            pushVC()
+            searchBar.resignFirstResponder()
+        }
+    }
     
     @IBAction func didSelectSegment(_ sender:UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -122,20 +152,19 @@ class HomeVC: UIViewController,UISearchBarDelegate {
         }
     }
     
-    
-    
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text!.count >= 12 {
-            self.view.makeToast("12자 까지만 입력하세요", duration: 3.0, position: .top)
+    //MARK: -UIGestureRecognizerDelegate
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print("HOmeVC= ges suouldReceive touch called ")
+        //터치로 들어온 뷰가 요놈이면 예외처리!
+        if touch.view?.isDescendant(of: control) == true {
+            return false
         }
-        else if searchBar.text!.isEmpty {
-            self.view.makeToast("입력하세요", duration: 3.0, position: .top)
+        else if touch.view?.isDescendant(of: searchBar) == true {
+            return false
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        view.endEditing(true)
+        return true
     }
 }
 

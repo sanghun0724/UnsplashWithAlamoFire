@@ -38,7 +38,7 @@
                                     </segmentedControl>
                                     <searchBar contentMode="redraw" placeholder="사진 키워드 입력" translatesAutoresizingMaskIntoConstraints="NO" id="Blp-KC-hfr">
                                         <rect key="frame" x="0.0" y="223" width="374" height="56"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
                                     </searchBar>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4U-t5-QZW">
                                         <rect key="frame" x="147" y="299" width="80" height="40"/>
