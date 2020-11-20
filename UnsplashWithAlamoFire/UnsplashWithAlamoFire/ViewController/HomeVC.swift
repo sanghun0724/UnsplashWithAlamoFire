@@ -25,6 +25,9 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
         self.config()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.searchBar.becomeFirstResponder() //포커싱주기
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -57,14 +60,47 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
         //제스처 추가
         self.view.addGestureRecognizer(keyboardDismissTabGesture) // 그작은뷰 터치하면 감지! 노랭이
         
-        self.searchBar.becomeFirstResponder() //포커싱주기
+      
     }
     
     
     @IBAction func onSearchButtonClicked(_sender:UIButton) {
         pushVC()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+            //키보드 올라가는 이벤트를 받는 처리
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        // 키보드 내려가는 이벤트를 받는 처리
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillAppear(noti: NSNotification) {
+        //키보드 사이즈 가져요기 //키보드 사이즈 계산 // 버튼과 키보드 거리 계산해서 얼마나 올라갈지 넣어 주면됨!
+        if let keyboardSize = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print("keyboardSize.height:\(keyboardSize.height)")
+            print("searchButton.height:\(button.frame.origin.y)")
+            
+            if keyboardSize.height < button.frame.origin.y { //키패드가 버튼을 덮는다면
+                let distance = keyboardSize.height - button.frame.origin.y
+                print("이만큼 덮었다:\(distance)")
+                self.view.frame.origin.y = distance + button.frame.height
+            }
+        }
+       
+    }
+    
+    @objc func keyboardWillDisappear(noti:NSNotification) {
+      
+    }
+    
     //MARK: - fileprivate methods
     fileprivate func  pushVC() {
         var segueId:String = ""
