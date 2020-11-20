@@ -25,6 +25,28 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
         self.config()
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case SEGUE_ID.USER_LIST_VC:
+            let nextVC = segue.destination as! UserListVC
+            
+            guard let userInputValue = self.searchBar.text else {
+                return
+            }
+            nextVC.vcTitle = userInputValue
+        case SEGUE_ID.PHOTO_COLLECTION_VC:
+            let nextVC = segue.destination as! PhotoCollectionVC
+            
+            guard let userInputValue = self.searchBar.text else {
+                return
+            }
+            nextVC.vcTitle = userInputValue
+        default:
+            print("default")
+        }
+    }
+    
     //MARK:- fileprivate methods
     
     fileprivate func config() {
@@ -42,36 +64,7 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
     @IBAction func onSearchButtonClicked(_sender:UIButton) {
         pushVC()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillAppear(noti: NSNotification) {
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            self.view.frame.origin.y -= keyboardHeight
-        }
-    }
-    
-    @objc func keyboardWillDisappear(noti:NSNotification) {
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            self.view.frame.origin.y += keyboardHeight
-        }
-        
-    }
-    
+
     //MARK: - fileprivate methods
     fileprivate func  pushVC() {
         var segueId:String = ""
@@ -79,7 +72,7 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
         switch control.selectedSegmentIndex {
         case 0:
             print("사진화면으로이동")
-            segueId = "goToPhotoCollectionVC"
+            segueId = "goToPhotoCollctionVC"
         case 1:
             print("유저화면으로이동")
             segueId = "goToUserListVC"
@@ -125,7 +118,9 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
         if searchText.isEmpty { //초기값
             //filterData = data
             self.button.isHidden = true
-            searchBar.resignFirstResponder()
+            
+            DispatchQueue.main.asyncAfter(deadline:  .now() + 0.01, execute:{ searchBar.resignFirstResponder()
+            })
         }
         else {
             self.button.isHidden = false 

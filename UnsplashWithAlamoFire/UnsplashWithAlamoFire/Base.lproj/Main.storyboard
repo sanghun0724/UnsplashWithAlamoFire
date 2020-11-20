@@ -38,7 +38,11 @@
                                     </segmentedControl>
                                     <searchBar contentMode="redraw" placeholder="사진 키워드 입력" translatesAutoresizingMaskIntoConstraints="NO" id="Blp-KC-hfr">
                                         <rect key="frame" x="0.0" y="223" width="374" height="56"/>
-                                        <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
                                     </searchBar>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4U-t5-QZW">
                                         <rect key="frame" x="147" y="299" width="80" height="40"/>
@@ -93,20 +97,29 @@
                         <outlet property="imageView" destination="cnI-qz-9Z0" id="nhe-cN-FBG"/>
                         <outlet property="searchBar" destination="Blp-KC-hfr" id="xZh-fu-7CH"/>
                         <segue destination="JP9-x2-6eh" kind="show" identifier="goToUserListVC" id="d1R-dK-ZmE"/>
-                        <segue destination="YMa-Dj-g8K" kind="show" identifier="goToPhotoCollectionVC" id="sVn-XP-3kJ"/>
+                        <segue destination="YMa-Dj-g8K" kind="show" identifier="goToPhotoCollctionVC" id="sVn-XP-3kJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="79.6875"/>
         </scene>
-        <!--View Controller-->
+        <!--User ListVC-->
         <scene sceneID="rAN-ja-YH6">
             <objects>
-                <viewController id="JP9-x2-6eh" sceneMemberID="viewController">
+                <viewController id="JP9-x2-6eh" customClass="UserListVC" customModule="UnsplashWithAlamoFire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jyq-su-mrK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eun-No-CST">
+                                <rect key="frame" x="186" y="376" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7zZ-0B-fAa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -116,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="1881" y="80"/>
         </scene>
-        <!--View Controller-->
+        <!--Photo CollectionVC-->
         <scene sceneID="6rj-Ma-hpu">
             <objects>
-                <viewController id="YMa-Dj-g8K" sceneMemberID="viewController">
+                <viewController id="YMa-Dj-g8K" customClass="PhotoCollectionVC" customModule="UnsplashWithAlamoFire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Qd-zQ-CNa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

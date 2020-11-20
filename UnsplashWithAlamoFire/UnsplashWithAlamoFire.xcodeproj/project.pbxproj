@@ -10,6 +10,8 @@
 		55E213561A72BA78660A3C87 /* Pods_UnsplashWithAlamoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E83A08105B2B3C46949C02C /* Pods_UnsplashWithAlamoFire.framework */; };
 		B6D703862567F82000E1C926 /* UserListVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D703852567F82000E1C926 /* UserListVc.swift */; };
 		B6D7038A2567F86700E1C926 /* PhotoCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D703892567F86700E1C926 /* PhotoCollectionVC.swift */; };
+		B6D7038E25681DED00E1C926 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7038D25681DED00E1C926 /* Constant.swift */; };
+		B6D7039625681F5400E1C926 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D7039525681F5400E1C926 /* BaseVC.swift */; };
 		B6E2CABB25669BF10030CE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2CABA25669BF10030CE24 /* AppDelegate.swift */; };
 		B6E2CABD25669BF10030CE24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2CABC25669BF10030CE24 /* SceneDelegate.swift */; };
 		B6E2CABF25669BF10030CE24 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2CABE25669BF10030CE24 /* HomeVC.swift */; };
@@ -22,6 +24,8 @@
 		6E83A08105B2B3C46949C02C /* Pods_UnsplashWithAlamoFire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsplashWithAlamoFire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D703852567F82000E1C926 /* UserListVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVc.swift; sourceTree = "<group>"; };
 		B6D703892567F86700E1C926 /* PhotoCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVC.swift; sourceTree = "<group>"; };
+		B6D7038D25681DED00E1C926 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		B6D7039525681F5400E1C926 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		B6E2CAB725669BF10030CE24 /* UnsplashWithAlamoFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashWithAlamoFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E2CABA25669BF10030CE24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E2CABC25669BF10030CE24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B6D7038C25681DDD00E1C926 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B6D7038D25681DED00E1C926 /* Constant.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B6D7039825681F6200E1C926 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B6D7039525681F5400E1C926 /* BaseVC.swift */,
+				B6D703892567F86700E1C926 /* PhotoCollectionVC.swift */,
+				B6D703852567F82000E1C926 /* UserListVc.swift */,
+				B6E2CABE25669BF10030CE24 /* HomeVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		B6E2CAAE25669BF10030CE24 = {
 			isa = PBXGroup;
 			children = (
@@ -76,12 +99,11 @@
 		B6E2CAB925669BF10030CE24 /* UnsplashWithAlamoFire */ = {
 			isa = PBXGroup;
 			children = (
+				B6D7039825681F6200E1C926 /* ViewController */,
+				B6D7038C25681DDD00E1C926 /* Utils */,
 				B6E2CABA25669BF10030CE24 /* AppDelegate.swift */,
 				B6E2CABC25669BF10030CE24 /* SceneDelegate.swift */,
-				B6E2CABE25669BF10030CE24 /* HomeVC.swift */,
 				B6E2CAC025669BF10030CE24 /* Main.storyboard */,
-				B6D703852567F82000E1C926 /* UserListVc.swift */,
-				B6D703892567F86700E1C926 /* PhotoCollectionVC.swift */,
 				B6E2CAC325669BF30030CE24 /* Assets.xcassets */,
 				B6E2CAC525669BF30030CE24 /* LaunchScreen.storyboard */,
 				B6E2CAC825669BF30030CE24 /* Info.plist */,
@@ -217,6 +239,8 @@
 				B6E2CABD25669BF10030CE24 /* SceneDelegate.swift in Sources */,
 				B6D703862567F82000E1C926 /* UserListVc.swift in Sources */,
 				B6D7038A2567F86700E1C926 /* PhotoCollectionVC.swift in Sources */,
+				B6D7039625681F5400E1C926 /* BaseVC.swift in Sources */,
+				B6D7038E25681DED00E1C926 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
