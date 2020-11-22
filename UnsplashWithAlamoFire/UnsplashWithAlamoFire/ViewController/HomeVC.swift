@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast_Swift
+import Alamofire
 
 class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
 
@@ -63,9 +64,28 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
       
     }
     
-    
+    //MARK: -IBAction methods
     @IBAction func onSearchButtonClicked(_sender:UIButton) {
-        pushVC()
+        let url = API.BASE_URL + "search/photos"
+        
+        guard let userInput = self.searchBar.text else {
+            return
+        }
+        
+        let queryParam = ["quert": userInput,"client_id" : API.CLIENT_ID]
+        
+//        AF.request(url, method: .get,parameters: queryParam).responseJSON(completionHandler: {
+//            response in
+//            debugPrint(response)
+//        })
+        
+        MyAlamoFiremanager
+            .shared
+            .session
+            .request(url).responseJSON(completionHandler: {
+                response in
+                debugPrint(response)
+            })
     }
     
     override func viewWillAppear(_ animated: Bool) {
