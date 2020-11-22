@@ -9,7 +9,7 @@ import UIKit
 import Toast_Swift
 import Alamofire
 
-class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
+class HomeVC: BaseVC,UISearchBarDelegate,UIGestureRecognizerDelegate {
 
     @IBOutlet var control:UISegmentedControl!
     @IBOutlet var imageView:UIImageView!
@@ -66,26 +66,43 @@ class HomeVC: UIViewController,UISearchBarDelegate,UIGestureRecognizerDelegate {
     
     //MARK: -IBAction methods
     @IBAction func onSearchButtonClicked(_sender:UIButton) {
-        let url = API.BASE_URL + "search/photos"
+//        let url = API.BASE_URL + "search/photos"
         
         guard let userInput = self.searchBar.text else {
             return
         }
         
-        let queryParam = ["quert": userInput,"client_id" : API.CLIENT_ID]
+        // 키 밸류 형식의 딕셔너리
+//        let queryParam = ["quert": userInput,"client_id" : API.CLIENT_ID]
         
 //        AF.request(url, method: .get,parameters: queryParam).responseJSON(completionHandler: {
 //            response in
 //            debugPrint(response)
 //        })
+        var UrlToCall: URLRequestConvertible?
         
-        MyAlamoFiremanager
-            .shared
-            .session
-            .request(url).responseJSON(completionHandler: {
-                response in
-                debugPrint(response)
-            })
+        switch control.selectedSegmentIndex {
+        case 0:
+            UrlToCall = MySearchRouter.searchPhotos(term: userInput)
+        case 1:
+            UrlToCall = MySearchRouter.searchUsers(term: userInput)
+        default:
+            print("default")
+              }
+        
+        if let urlConvertible = UrlToCall {
+         
+            MyAlamoFiremanager
+                .shared
+                .session
+                .request(MySearchRouter.searchPhotos(term: userInput))
+                .validate(statusCode: 200..<401) //200에서 400까지만 받겠다
+                .responseJSON(completionHandler: {
+                    response in
+                    debugPrint(response)
+                })
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
