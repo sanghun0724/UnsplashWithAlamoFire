@@ -46,6 +46,7 @@ class HomeVC: BaseVC,UISearchBarDelegate,UIGestureRecognizerDelegate {
                 return
             }
             nextVC.vcTitle = userInputValue
+            
         default:
             print("default")
         }
