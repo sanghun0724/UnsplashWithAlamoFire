@@ -74,7 +74,7 @@ final class MyAlamoFiremanager {
                     
                     let PhotoItem = Photo(thumnail: thumnail, username: username, likesCount: likesCount, createdAt: createdAt)
                     //배열에 넣고
-                    photos.append(PhotoItem)
+                photos.append(PhotoItem)
                 }
                 
                 if photos.count > 0 {
