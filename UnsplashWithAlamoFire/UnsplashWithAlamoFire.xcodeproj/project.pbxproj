@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		55E213561A72BA78660A3C87 /* Pods_UnsplashWithAlamoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E83A08105B2B3C46949C02C /* Pods_UnsplashWithAlamoFire.framework */; };
+		B6025035256B831D003DAF3A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6025034256B831D003DAF3A /* Photo.swift */; };
+		B6025039256B8365003DAF3A /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6025038256B8365003DAF3A /* MyError.swift */; };
 		B673C9A1256A4E6D0034C78B /* MyAlamoFireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B673C9A0256A4E6D0034C78B /* MyAlamoFireManager.swift */; };
 		B673C9A5256A4F760034C78B /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B673C9A4256A4F760034C78B /* BaseInterceptor.swift */; };
 		B673C9AA256A55870034C78B /* MyLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B673C9A9256A55870034C78B /* MyLogger.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		6E83A08105B2B3C46949C02C /* Pods_UnsplashWithAlamoFire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsplashWithAlamoFire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6025034256B831D003DAF3A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B6025038256B8365003DAF3A /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
 		B673C9A0256A4E6D0034C78B /* MyAlamoFireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlamoFireManager.swift; sourceTree = "<group>"; };
 		B673C9A4256A4F760034C78B /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		B673C9A9256A55870034C78B /* MyLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLogger.swift; sourceTree = "<group>"; };
@@ -69,6 +73,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B6025033256B8305003DAF3A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6025034256B831D003DAF3A /* Photo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B673C99F256A4E480034C78B /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				B6D7038D25681DED00E1C926 /* Constant.swift */,
+				B6025038256B8365003DAF3A /* MyError.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -121,6 +134,7 @@
 		B6E2CAB925669BF10030CE24 /* UnsplashWithAlamoFire */ = {
 			isa = PBXGroup;
 			children = (
+				B6025033256B8305003DAF3A /* Model */,
 				B673C99F256A4E480034C78B /* API */,
 				B6D7039825681F6200E1C926 /* ViewController */,
 				B6D7038C25681DDD00E1C926 /* Utils */,
@@ -263,7 +277,9 @@
 				B6D703862567F82000E1C926 /* UserListVc.swift in Sources */,
 				B673C9B0256A57FE0034C78B /* MySearchRouter.swift in Sources */,
 				B673C9A1256A4E6D0034C78B /* MyAlamoFireManager.swift in Sources */,
+				B6025035256B831D003DAF3A /* Photo.swift in Sources */,
 				B6D7038A2567F86700E1C926 /* PhotoCollectionVC.swift in Sources */,
+				B6025039256B8365003DAF3A /* MyError.swift in Sources */,
 				B673C9AD256A570F0034C78B /* MyApiStatusLogger.swift in Sources */,
 				B673C9A5256A4F760034C78B /* BaseInterceptor.swift in Sources */,
 				B673C9AA256A55870034C78B /* MyLogger.swift in Sources */,

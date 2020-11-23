@@ -13,7 +13,7 @@ enum SEGUE_ID {
 }
 
 enum API {
-    static let  BASE_URL : String = "https://api.unsplash.com"
+    static let  BASE_URL : String = "https://api.unsplash.com/"
     static let  CLIENT_ID: String = "ibu8ICtYTpZBEv2zJ_1Ku_58FLj9pLQX0bK52UldoyM"
 }
 

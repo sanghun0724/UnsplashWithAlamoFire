@@ -23,7 +23,7 @@ final class  MyApiStatusLogger : EventMonitor {
             return
         }
         
-        print("MyApiStatusLogger - StatusCode")
+        print("MyApiStatusLogger - StatusCode \(statusCode)")
         debugPrint(request)
     }
 }
