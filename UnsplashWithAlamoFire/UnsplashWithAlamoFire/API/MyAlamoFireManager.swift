@@ -77,12 +77,15 @@ final class MyAlamoFiremanager {
                     //배열에 넣고
                     
                 photos.append(PhotoItem)
-                
+                    //let ts:PhotoCollectionVC = PhotoCollectionVC()
+                   // ts.photoArr.append(PhotoItem)
                 }
               
                 
                 if photos.count > 0 {
                     NotificationCenter.default.post(name: self.DidRecieveFriendsNotification, object: nil,userInfo: ["Test":photos])
+//                    let ts:PhotoCollectionVC = PhotoCollectionVC()
+//                    ts.photoArr = photos
                     completion(.success(photos))
                 } else {
                     completion(.failure(MyError.noContent))

@@ -147,18 +147,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="260" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="j.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5mK-1o-4Q8">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="j.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5mK-1o-4Q8">
                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="147"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTs-TZ-rWG">
-                                                    <rect key="frame" x="85" y="156" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTs-TZ-rWG">
+                                                    <rect key="frame" x="0.0" y="156" width="260" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tTs-TZ-rWG" firstAttribute="top" secondItem="5mK-1o-4Q8" secondAttribute="bottom" constant="7.5" id="KKO-aG-gGP"/>
+                                                <constraint firstItem="tTs-TZ-rWG" firstAttribute="centerX" secondItem="Dib-X6-IER" secondAttribute="centerX" id="LC3-lg-rbG"/>
+                                                <constraint firstAttribute="trailing" secondItem="tTs-TZ-rWG" secondAttribute="trailing" id="Osf-Cz-y1M"/>
+                                                <constraint firstItem="tTs-TZ-rWG" firstAttribute="leading" secondItem="5mK-1o-4Q8" secondAttribute="leading" id="VJS-V5-RJ2"/>
+                                                <constraint firstItem="tTs-TZ-rWG" firstAttribute="leading" secondItem="Dib-X6-IER" secondAttribute="leading" id="ZqW-dh-KQ4"/>
+                                                <constraint firstAttribute="bottom" secondItem="tTs-TZ-rWG" secondAttribute="bottom" constant="23" id="tRi-ZW-i5v"/>
+                                                <constraint firstItem="tTs-TZ-rWG" firstAttribute="trailing" secondItem="5mK-1o-4Q8" secondAttribute="trailing" id="xNi-qj-udh"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="260" height="200"/>
                                         <connections>

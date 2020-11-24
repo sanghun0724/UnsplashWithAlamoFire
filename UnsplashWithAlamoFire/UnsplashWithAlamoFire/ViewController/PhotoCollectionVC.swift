@@ -18,23 +18,24 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveFriendsNotification(_:)), name: NSNotification.Name(rawValue: "DidRecieve"), object: nil)
+        print("@@\(self.photoArr)")
         fetchData()
+        debugPrint(photoArr)
         collectionView.delegate = self
         collectionView.dataSource = self
         UIDesine()
         collectionView.reloadData()
-       print("위에 PhotoArr배열에 데이터가 안담겨요 ㅠㅠ\(self.photoArr)")
     }
     func fetchData() {
         MyAlamoFiremanager
             .shared
             .getPhotos(searchTerm: self.vcTitle, completion: {
-            [weak self]result in
-                switch result {
+            [self]result in
+              switch result {
                 case .success(let fetchedPhotos) :
                     print("HomeVC -getPhotos.success -fetchedPhotos.count: \(fetchedPhotos.count)")
-                    self?.photoArr = fetchedPhotos
-                    print("HomeVC -getPhotos.success -fetchedPhotos.coun:\(self!.photoArr)")
+                  //self.photoArr = fetchPhotos 할당이 안된다
+                   
                 case .failure(let error):
                     print("HOmeVC - getPhotos.failure - error: \(error.rawValue)")
                 }
@@ -46,11 +47,12 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
             return
         }
         self.photoArr = Test
-        
+        print("\(photoArr)")
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
+    
     func UIDesine() {
         let collectionLayout:UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
@@ -73,18 +75,14 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
             return UICollectionViewCell()
         }
         let photoTest:Photo = self.photoArr[indexPath.item]
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         cell.Image?.image = nil
         cell.testLabel.text = photoTest.username
         
         DispatchQueue.global().async {
             
             guard let imageURL:URL = URL(string:photoTest.thumnail) else {
-                print("@@@@@@@@@@@@@@@@@@@@@@\(photoTest.thumnail)")
                 return
             }
-            print("@@@@@@@@@@@@@@@\(imageURL)")
-            
             guard let imageData: Data = try? Data(contentsOf: imageURL) else {
                 return
             }
