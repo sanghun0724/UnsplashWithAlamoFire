@@ -151,14 +151,26 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="260" height="147"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTs-TZ-rWG">
+                                                    <rect key="frame" x="85" y="156" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="260" height="200"/>
                                         <connections>
                                             <outlet property="Image" destination="5mK-1o-4Q8" id="poq-xx-ugY"/>
+                                            <outlet property="testLabel" destination="tTs-TZ-rWG" id="wsb-JE-rHW"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="YMa-Dj-g8K" id="rig-xB-F0T"/>
+                                    <outlet property="delegate" destination="YMa-Dj-g8K" id="YYW-qA-HU9"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GFD-ET-LJl"/>

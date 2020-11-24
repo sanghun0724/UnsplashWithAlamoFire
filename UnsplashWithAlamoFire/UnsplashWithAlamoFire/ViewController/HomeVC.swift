@@ -85,17 +85,6 @@ class HomeVC: BaseVC,UISearchBarDelegate,UIGestureRecognizerDelegate {
         switch control.selectedSegmentIndex {
         case 0:
             UrlToCall = MySearchRouter.searchPhotos(term: userInput)
-            MyAlamoFiremanager
-                .shared
-                .getPhotos(searchTerm: userInput, completion: {
-                result in
-                    switch result {
-                    case .success(let fetchedPhotos) :
-                        print("HomeVC -getPhotos.success -fetchedPhotos.count: \(fetchedPhotos.count)")
-                    case .failure(let error):
-                        print("HOmeVC - getPhotos.failure - error: \(error.rawValue)")
-                    }
-            })
         case 1:
             UrlToCall = MySearchRouter.searchUsers(term: userInput)
         default:

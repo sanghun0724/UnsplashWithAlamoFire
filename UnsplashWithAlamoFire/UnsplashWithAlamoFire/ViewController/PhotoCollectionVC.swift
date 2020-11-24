@@ -10,18 +10,19 @@ import UIKit
 class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSource {
     
     @IBOutlet var collectionView:UICollectionView!
-    var Photoarr:[Photo] = [Photo]()
+    var photoArr:[Photo] = [Photo]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
         collectionView.delegate = self
         collectionView.dataSource = self
         UIDesine()
         collectionView.reloadData()
+       print("위에 PhotoArr배열에 데이터가 안담겨요 ㅠㅠ\(self.photoArr)")
     }
     func fetchData() {
         MyAlamoFiremanager
@@ -31,8 +32,8 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
                 switch result {
                 case .success(let fetchedPhotos) :
                     print("HomeVC -getPhotos.success -fetchedPhotos.count: \(fetchedPhotos.count)")
-                    self?.Photoarr = fetchedPhotos
-                    print("HomeVC -getPhotos.success -fetchedPhotos.coun:\(self!.Photoarr)")
+                    self?.photoArr = fetchedPhotos
+                    print("HomeVC -getPhotos.success -fetchedPhotos.coun:\(self!.photoArr)")
                 case .failure(let error):
                     print("HOmeVC - getPhotos.failure - error: \(error.rawValue)")
                 }
@@ -53,16 +54,17 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Photoarr.count
+        return photoArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell:PhotoCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? PhotoCollectionCell else {
             return UICollectionViewCell()
         }
-        let photoTest:Photo = self.Photoarr[indexPath.item]
-        
+        let photoTest:Photo = self.photoArr[indexPath.item]
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         cell.Image?.image = nil
+        cell.testLabel.text = photoTest.username
         
         DispatchQueue.global().async {
             
