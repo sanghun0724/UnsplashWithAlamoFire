@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 
 final class MyAlamoFiremanager {
-    
+    let DidRecieveFriendsNotification:Notification.Name = Notification.Name("DidRecieve")
     //싱글턴 적용
     static let shared = MyAlamoFiremanager()
     
@@ -38,7 +38,7 @@ final class MyAlamoFiremanager {
             .session
             .request(MySearchRouter.searchPhotos(term: userInput))
             .validate(statusCode: 200..<401) //200에서 400까지만 받겠다
-            .responseJSON(completionHandler: {
+            .responseJSON(completionHandler: { [self]
                 response in
                 
                 guard let responseValue = response.value else {
@@ -68,6 +68,7 @@ final class MyAlamoFiremanager {
                     guard let thumnail = subJson["urls"]["thumb"].string,
                           let username = subJson["user"]["username"].string,
                           let createdAt = subJson["created_at"].string else {
+                       print("Error")
                         return
                     }
                     let likesCount = subJson["likes"].intValue
@@ -78,8 +79,10 @@ final class MyAlamoFiremanager {
                 photos.append(PhotoItem)
                 
                 }
+              
                 
                 if photos.count > 0 {
+                    NotificationCenter.default.post(name: self.DidRecieveFriendsNotification, object: nil,userInfo: ["Test":photos])
                     completion(.success(photos))
                 } else {
                     completion(.failure(MyError.noContent))

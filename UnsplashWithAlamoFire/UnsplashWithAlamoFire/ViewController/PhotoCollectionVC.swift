@@ -17,6 +17,7 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveFriendsNotification(_:)), name: NSNotification.Name(rawValue: "DidRecieve"), object: nil)
         fetchData()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -40,6 +41,16 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
         })
     }
     
+    @objc func didRecieveFriendsNotification(_ noti: Notification) {
+        guard let Test:[Photo] = noti.userInfo?["Test"] as? [Photo] else {
+            return
+        }
+        self.photoArr = Test
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
     func UIDesine() {
         let collectionLayout:UICollectionViewFlowLayout = {
             let layout = UICollectionViewFlowLayout()
