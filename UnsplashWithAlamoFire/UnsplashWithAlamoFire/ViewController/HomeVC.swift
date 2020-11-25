@@ -80,6 +80,7 @@ class HomeVC: BaseVC,UISearchBarDelegate,UIGestureRecognizerDelegate {
 //            response in
 //            debugPrint(response)
 //        })
+        
         var UrlToCall: URLRequestConvertible?
         
         switch control.selectedSegmentIndex {
@@ -132,7 +133,6 @@ class HomeVC: BaseVC,UISearchBarDelegate,UIGestureRecognizerDelegate {
                 self.view.frame.origin.y = distance + button.frame.height
             }
         }
-       
     }
     
     @objc func keyboardWillDisappear(noti:NSNotification) {

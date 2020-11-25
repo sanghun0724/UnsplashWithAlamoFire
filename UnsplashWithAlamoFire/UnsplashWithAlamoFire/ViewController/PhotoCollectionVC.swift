@@ -8,9 +8,14 @@
 import UIKit
 
 class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSource {
+    //이미지 캐싱 스크롤 할때 메모리에 저장 (프리징 x)
     
     @IBOutlet var collectionView:UICollectionView!
-    var photoArr:[Photo] = [Photo]()
+    var photoArr:[Photo] = [Photo]() {
+        didSet {
+            self.photoArr.forEach{print("Your data IS!!!\($0.thumnail)")}
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -18,6 +23,7 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveFriendsNotification(_:)), name: NSNotification.Name(rawValue: "DidRecieve"), object: nil)
+        
         print("@@\(self.photoArr)")
         fetchData()
         debugPrint(photoArr)
@@ -35,7 +41,13 @@ class PhotoCollectionVC: BaseVC,UICollectionViewDelegate,UICollectionViewDataSou
                 case .success(let fetchedPhotos) :
                     print("HomeVC -getPhotos.success -fetchedPhotos.count: \(fetchedPhotos.count)")
                   //self.photoArr = fetchPhotos 할당이 안된다
-                   
+                    //self.photoArr.append(contentsOf: fetchedPhotos) << 해봐야함
+              // 인디케이터 뷰
+                    fetchedPhotos.map{
+                        $0.createdAt
+                    }
+                
+                        
                 case .failure(let error):
                     print("HOmeVC - getPhotos.failure - error: \(error.rawValue)")
                 }
