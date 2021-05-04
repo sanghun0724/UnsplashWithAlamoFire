@@ -8,7 +8,7 @@ This is an IOS application for Unsplash Image
    
 * Launch Board   
 <img src="/imagefile/alamo1.png" width="156px" height="320px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>   
-* Search View   
+* Search View (keyboard Notification)  
 <img src="/imagefile/alamo3.png" width="156px" height="320px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br/>   
 * Toast message   
 <img src="/imagefile/alamo6.png" width="156px" height="320px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>
